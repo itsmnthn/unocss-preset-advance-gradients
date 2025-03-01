@@ -1,0 +1,91 @@
+{
+  "name": "unocss-preset-advance-gradients",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.5.2",
+  "description": "UnoCSS preset for advance gradients for border and text.",
+  "author": "itsmnthn",
+  "homepage": "https://github.com/itsmnthn/unocss-preset-advance-gradients",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsmnthn/unocss-preset-advance-gradients.git"
+  },
+  "bugs": {
+    "url": "https://github.com/itsmnthn/unocss-preset-advance-gradients/issues"
+  },
+  "keywords": [
+    "unocss",
+    "unocss-preset",
+    "advance gradients",
+    "border gradients",
+    "text gradients"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rimraf dist && unbuild",
+    "dev": "unbuild --stub",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepublishOnly": "nr build",
+    "release": "bumpp --commit --push --tag && pnpm publish",
+    "start": "node --loader=ts-node/esm src/index.ts",
+    "test": "node --loader=ts-node/esm bin/test.ts",
+    "typecheck": "tsc --noEmit",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "cleanup": "rimraf dist node_modules .vitepress/dist .vitepress/cache"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.3.0",
+    "@unocss/core": "66.1.0-beta.3",
+    "@unocss/eslint-plugin": "66.1.0-beta.3",
+    "@unocss/extractor-mdc": "66.1.0-beta.3",
+    "@unocss/reset": "66.1.0-beta.3",
+    "bumpp": "^10.0.3",
+    "eslint": "^9.21.0",
+    "eslint-plugin-format": "^1.0.1",
+    "lint-staged": "^15.4.3",
+    "rimraf": "^6.0.1",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "~5.7.2",
+    "unbuild": "^3.5.0",
+    "unocss": "66.1.0-beta.3",
+    "unocss-preset-gradient-fn": "0.0.1-beta-1.0",
+    "vite": "^6.2.0",
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.13"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "simple-git-hooks"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
