@@ -10,13 +10,11 @@ hero:
     - theme: brand
       text: Get Started
       link: /getting-started
-    - theme: alt
-      text: Usage
-      link: /usage
 
 features:
   - title: Gradient Borders
-    details: Use gradient borders and animate them easily
+    details: A UnoCSS preset that enables dynamic gradient borders using pseudo-elements. Preserves border-radius, allows smooth animations and transitions between different gradient states.
+    link: /border/getting-started.md
   - title: Gradient Text
     details: Use gradient text much faster and easily
   - title: Pre-Defined Gradients

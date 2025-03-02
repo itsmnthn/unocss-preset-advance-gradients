@@ -9,39 +9,34 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Usage', link: '/usage' },
+      { text: 'Border', link: '/border/getting-started' },
+      { text: 'Text', link: '/text/getting-started' },
+      { text: 'Gradients', link: '/gradients/getting-started' },
     ],
 
     sidebar: [
       {
         text: 'Getting Started',
-        items: [
-          { text: 'Why Use This Preset?', link: '/getting-started/why-use-this-preset' },
-          { text: 'Installation', link: '/getting-started/installation' },
-          { text: 'Configuration', link: '/getting-started/configuration' },
-        ],
+        link: '/getting-started',
       },
       {
         text: 'Gradient Borders',
         items: [
           { text: 'Getting Started', link: '/border/getting-started' },
-          { text: 'Sides', link: '/border/sides' },
-          { text: 'Animation', link: '/border/animation' },
+          { text: 'Sides & Sizes', link: '/border/sides-and-sizes' },
+          { text: 'Rounded', link: '/border/rounded' },
         ],
       },
       {
         text: 'Gradient Text',
         items: [
-          { text: 'Basic Usage', link: '/gradient-text/basic-usage' },
-          { text: 'Animation', link: '/gradient-text/animation' },
+          { text: 'Getting Started', link: '/text/getting-started' },
         ],
       },
       {
         text: 'Pre-Defined Gradients',
         items: [
-          { text: 'Basic Usage', link: '/pre-defined-gradients/basic-usage' },
-          { text: 'Animation', link: '/pre-defined-gradients/animation' },
-          { text: 'Glassmorphism', link: '/pre-defined-gradients/glassmorphism' },
+          { text: 'Getting Started', link: '/gradients/getting-started' },
         ],
       },
     ],
