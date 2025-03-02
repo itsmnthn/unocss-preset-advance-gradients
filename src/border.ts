@@ -4,71 +4,23 @@ import type { Preset, Rule } from 'unocss'
  * Collection of UnoCSS rules for gradient borders
  */
 export const rules: Rule[] = [
-  // Rule for setting border widths on specific sides
-  // Usage: gb-[sides]-[width] or gradient-border-[sides]-[width]
-  // Example: gb-t-2 (2px top border), gb-xy-4 (4px horizontal and vertical borders)
-  [
-    /^g(?:radient-)?b(?:order)?(?:-([tblrxy]+))?-(\d+)$/,
-    ([, sides, value]) => {
-      if (!sides) {
-        // If no specific side is mentioned, apply to all sides
-        return {
-          '--unag-border-top-width': `${value}px`,
-          '--unag-border-bottom-width': `${value}px`,
-          '--unag-border-left-width': `${value}px`,
-          '--unag-border-right-width': `${value}px`,
-        }
-      }
-
-      // Default all borders to 0px first
-      const styles = {
-        '--unag-border-top-width': '0px',
-        '--unag-border-bottom-width': '0px',
-        '--unag-border-left-width': '0px',
-        '--unag-border-right-width': '0px',
-      }
-
-      // Apply the specified sides
-      // t = top, b = bottom, l = left, r = right
-      // x = left + right, y = top + bottom
-      if (sides.includes('t')) {
-        styles['--unag-border-top-width'] = `${value}px`
-      }
-      if (sides.includes('b')) {
-        styles['--unag-border-bottom-width'] = `${value}px`
-      }
-      if (sides.includes('l')) {
-        styles['--unag-border-left-width'] = `${value}px`
-      }
-      if (sides.includes('r')) {
-        styles['--unag-border-right-width'] = `${value}px`
-      }
-      if (sides.includes('x')) {
-        styles['--unag-border-left-width'] = `${value}px`
-        styles['--unag-border-right-width'] = `${value}px`
-      }
-      if (sides.includes('y')) {
-        styles['--unag-border-top-width'] = `${value}px`
-        styles['--unag-border-bottom-width'] = `${value}px`
-      }
-
-      return styles
-    },
-  ],
-
   // Base rule for gradient-border with :after and :before handling
-  // Usage: gb[-variant] or gradient-border[-variant]
+  // Usage: [variant-]gb or [variant-]gradient-border
   // Variants: a (after), b (before), ab/ba (both)
-  // Example: gb (default after), gb-b (before only), gb-ab (both)
+  // Example: gb (default after), b-gb (before only), ab-gb (both)
   [
-    /^(gb|g-border|gradient-b|gradient-border)(?:-([ab]{1,2}))?$/,
-    ([match, , variant]) => {
+    /^(a|b|ab|ba)?-?(gradient-border|g-border|gradient-b|gb|g-b)$/,
+    ([match, variant]) => {
       const baseClass = `.${match}`
       const afterClass = `${baseClass}::after`
       const beforeClass = `${baseClass}::before`
 
       // Base styles applied to the container element
       const baseRules = `position: relative;overflow: hidden;background: transparent;`
+        + `--unag-border-top-width: var(--un-border-top-width, 1px);`
+        + `--unag-border-bottom-width: var(--un-border-bottom-width, 1px);`
+        + `--unag-border-left-width: var(--un-border-left-width, 1px);`
+        + `--unag-border-right-width: var(--un-border-right-width, 1px);`
 
       // Shared styles for pseudo-elements that create the gradient border effect
       const pseudoRules = `content: '';position: absolute;inset: 0;` /* Fill the container's area */
@@ -85,7 +37,10 @@ export const rules: Rule[] = [
           "outer shape" uses border-box (the full element). */
         + `-webkit-mask-composite: xor;` /* old WebKit syntax */
         + `mask-composite: exclude;`/* modern syntax (Chrome, Safari, Firefox) */
-        + `pointer-events: none;transition: all 0.3s ease-in-out;`
+        + `pointer-events: none;`
+        + `will-change: opacity, color, background-color, border-color;`
+        + `transition-property: opacity, color, background-color, border-color;`
+        + `transition-duration: 0.3s;transition-timing-function: ease-in-out;`
 
       // Default to only `::after` if no variant specified
       if (!variant) {
@@ -105,6 +60,71 @@ export const rules: Rule[] = [
 
       return style
     },
+    {
+      autocomplete: '(a|b|ab|ba)?-?(gradient-border|g-border|gradient-b|gb|g-b)',
+    },
+  ],
+
+  // Rule for setting border widths on specific sides
+  // Usage: gb-[sides]-[width] or gradient-border-[sides]-[width] or gb-[width]
+  // Example: gb-t-2 (2px top border), gb-xy-4 (4px horizontal and vertical borders), gb-2 (2px all sides)
+  [
+    /^(gradient-border|g-border|gradient-b|gb|g-b)(?:-([tblrxy]+)(?:-(\d+))?|-(\d+))$/,
+    ([_match, _selector, sides, sideValue, value]) => {
+      // Handle case where value is directly specified without sides
+      value = sideValue || value || '1'
+
+      if (!sides) {
+        // If no specific side is mentioned, apply to all sides
+        return {
+          '--un-border-top-width': `${value}px`,
+          '--un-border-bottom-width': `${value}px`,
+          '--un-border-left-width': `${value}px`,
+          '--un-border-right-width': `${value}px`,
+        }
+      }
+
+      // Default all borders to 0px first
+      const styles = {
+        '--un-border-top-width': '0px',
+        '--un-border-bottom-width': '0px',
+        '--un-border-left-width': '0px',
+        '--un-border-right-width': '0px',
+      }
+
+      // Apply the specified sides
+      // t = top, b = bottom, l = left, r = right
+      // x = left + right, y = top + bottom
+      if (sides.includes('t')) {
+        styles['--un-border-top-width'] = `${value}px`
+      }
+      if (sides.includes('b')) {
+        styles['--un-border-bottom-width'] = `${value}px`
+      }
+      if (sides.includes('l')) {
+        styles['--un-border-left-width'] = `${value}px`
+      }
+      if (sides.includes('r')) {
+        styles['--un-border-right-width'] = `${value}px`
+      }
+      if (sides.includes('x')) {
+        styles['--un-border-left-width'] = `${value}px`
+        styles['--un-border-right-width'] = `${value}px`
+      }
+      if (sides.includes('y')) {
+        styles['--un-border-top-width'] = `${value}px`
+        styles['--un-border-bottom-width'] = `${value}px`
+      }
+
+      return styles
+    },
+    {
+      autocomplete: [
+        '(gradient-border|g-border|gradient-b|gb|g-b)-<tblrxy>',
+        '(gradient-border|g-border|gradient-b|gb|g-b)-<tblrxy>-<num>',
+        '(gradient-border|g-border|gradient-b|gb|g-b)-<num>',
+      ],
+    },
   ],
 ]
 
@@ -115,13 +135,13 @@ export const rules: Rule[] = [
  *
  * @example
  * // Single border on all sides with 2px width
- * <div class="gb gb-2 after:(gradient)">...</div>
+ * <div class="gradient-border gb-2 after:(gradient)">...</div>
  *
  * // Gradient border only on top and bottom with 4px width
- * <div class="gb gb-y-4 after:(gradient)">...</div>
+ * <div class="gradient-border gb-y-4 after:(gradient)">...</div>
  *
  * // Dual gradient borders using both pseudo-elements
- * <div class="gb-ab gb-2 after:(gradient hover:op-0) before:(gradient)">...</div>
+ * <div class="ab-gradient-border gb-2 after:(gradient hover:op-0) before:(gradient)">...</div>
  */
 export function presetAdvanceGradientsBorder(): Preset {
   return {
