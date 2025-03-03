@@ -5,23 +5,25 @@ A UnoCSS preset that provides utilities for creating advanced gradient effects. 
 Currently Available Features:
 
 - [Gradient Borders](./border/getting-started.md)
-  - Single and double gradient borders with smooth transitions
+
+  - Gradient borders with smooth transitions
   - Full border-radius support
   - Configurable border sides and widths
   - Hover/focus animations
   - Seamless compatibility with other gradient utilities
 
-Coming Soon:
-
-- Gradient Text
+- [Gradient Text](./text/getting-started.md)
 
   - Animated gradient text effects
-  - Customizable text gradients
+  - Text Gradient guid
+
+Coming Soon:
 
 - Pre-defined Gradients
   - Collection of beautiful gradient presets
   - Glassmorphism effects with gradient borders
   - Easy-to-use gradient themes
+  - Animated Gradients
 
 Key Benefits:
 
