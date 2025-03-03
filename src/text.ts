@@ -3,7 +3,7 @@ import type { Preset, Rule } from 'unocss'
 /**
  * Collection of UnoCSS rules for gradient text effects
  */
-export const rules: Rule[] = [
+const rules: Rule[] = [
   // Base rule for gradient text with background clipping
   // Usage: [variant-]gt or [variant-]gradient-text
   // Example: gt, gradient-text, g-text
@@ -45,5 +45,3 @@ export function presetAdvanceGradientsText(): Preset {
     rules,
   }
 }
-
-export default presetAdvanceGradientsText

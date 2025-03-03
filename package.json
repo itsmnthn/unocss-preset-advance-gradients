@@ -2,10 +2,11 @@
   "name": "unocss-preset-advance-gradients",
   "type": "module",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "packageManager": "pnpm@10.5.2",
   "description": "UnoCSS preset for advance gradients for border and text.",
-  "author": "itsmnthn",
+  "author": "Manthankumar Satani<satanimanthan@gmail.com>",
+  "license": "MIT",
   "homepage": "https://github.com/itsmnthn/unocss-preset-advance-gradients",
   "repository": {
     "type": "git",
@@ -27,6 +28,16 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
+    },
+    "./border": {
+      "types": "./dist/border.d.ts",
+      "import": "./dist/border.mjs",
+      "require": "./dist/border.cjs"
+    },
+    "./text": {
+      "types": "./dist/text.d.ts",
+      "import": "./dist/text.mjs",
+      "require": "./dist/text.cjs"
     }
   },
   "main": "./dist/index.cjs",
@@ -36,7 +47,7 @@
     "dist"
   ],
   "engines": {
-    "node": ">=22"
+    "node": ">=18"
   },
   "publishConfig": {
     "access": "public"

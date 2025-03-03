@@ -1,6 +1,6 @@
 import type { Preset } from 'unocss'
-import presetAdvanceGradientsBorder from './border.ts'
-import presetAdvanceGradientsText from './text.ts'
+import { presetAdvanceGradientsBorder } from './border.ts'
+import { presetAdvanceGradientsText } from './text.ts'
 
 export function presetAdvanceGradients(): Preset {
   return {
@@ -11,5 +11,3 @@ export function presetAdvanceGradients(): Preset {
     ],
   }
 }
-
-export default presetAdvanceGradients

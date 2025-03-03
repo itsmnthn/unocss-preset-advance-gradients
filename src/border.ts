@@ -3,7 +3,7 @@ import type { Preset, Rule } from 'unocss'
 /**
  * Collection of UnoCSS rules for gradient borders
  */
-export const rules: Rule[] = [
+const rules: Rule[] = [
   // Base rule for gradient-border with :after and :before handling
   // Usage: [variant-]gb or [variant-]gradient-border
   // Variants: a (after), b (before), ab/ba (both)
@@ -149,5 +149,3 @@ export function presetAdvanceGradientsBorder(): Preset {
     rules,
   }
 }
-
-export default presetAdvanceGradientsBorder
