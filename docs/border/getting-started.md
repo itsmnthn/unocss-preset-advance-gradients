@@ -44,12 +44,12 @@ A simple **single-gradient border** using the `:after` pseudo-element.
 A **highly fluid** gradient border effect with animated transitions.
 
 <div
-  class="p-1 rounded-xl gradient-border gb-2 after:bg-gradient-fn-to-lt bg-gradient-fn-ease-in-expo/5 bg-gradient-fn-from-[#ffd200] bg-gradient-fn-to-[#f0008b] hover:bg-gradient-fn-from-[#7800e1] hover:bg-gradient-fn-to-[#c2f3ff] transition-colors duration-1s"
+  class="p-1 rounded-xl gradient-border gb-1.5 after:bg-gradient-fn-to-lt bg-gradient-fn-ease-in-expo/5 bg-gradient-fn-from-[#ffd200] bg-gradient-fn-to-[#f0008b] hover:bg-gradient-fn-from-[#7800e1] hover:bg-gradient-fn-to-[#c2f3ff] transition-colors duration-1s"
 >
 
 ```html
 <div
-  class="p-1 rounded-xl gradient-border gb-2 after:bg-gradient-fn-to-lt bg-gradient-fn-ease-in-expo/5 bg-gradient-fn-from-[#ffd200] bg-gradient-fn-to-[#f0008b] hover:bg-gradient-fn-from-[#7800e1] hover:bg-gradient-fn-to-[#c2f3ff] transition-colors duration-1s"
+  class="p-1 rounded-xl gradient-border gb-1.5 after:bg-gradient-fn-to-lt bg-gradient-fn-ease-in-expo/5 bg-gradient-fn-from-[#ffd200] bg-gradient-fn-to-[#f0008b] hover:bg-gradient-fn-from-[#7800e1] hover:bg-gradient-fn-to-[#c2f3ff] transition-colors duration-1s"
 >
   Smooth transition using `unocss-preset-gradient-fn`
 </div>

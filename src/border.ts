@@ -69,7 +69,8 @@ const rules: Rule[] = [
   // Usage: gb-[sides]-[width] or gradient-border-[sides]-[width] or gb-[width]
   // Example: gb-t-2 (2px top border), gb-xy-4 (4px horizontal and vertical borders), gb-2 (2px all sides)
   [
-    /^(gradient-border|g-border|gradient-b|gb|g-b)(?:-([tblrxy]+)(?:-(\d+))?|-(\d+))$/,
+    // /^(gradient-border|g-border|gradient-b|gb|g-b)(?:-([tblrxy]+)(?:-(\d+))?|-(\d+))$/,
+    /^(gradient-border|g-border|gradient-b|gb|g-b)(?:-([tblrxy]+)(?:-(\d+(?:\.\d+)?))?|-(\d+(?:\.\d+)?))$/,
     ([_match, _selector, sides, sideValue, value]) => {
       // Handle case where value is directly specified without sides
       value = sideValue || value || '1'

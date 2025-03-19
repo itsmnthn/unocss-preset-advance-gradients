@@ -12,7 +12,7 @@ The Gradient Border preset offers convenient utilities to control **which sides*
 1. **All Sides**
 
    - `gb` → all sides at `1px`
-   - `gb-{width}` → all sides at `{width}px` (e.g. `gb-2`)
+   - `gb-{width}` → all sides at `{width}px` (e.g. `gb-2`, `gb-1.5`)
 
 2. **Single Side**
 
